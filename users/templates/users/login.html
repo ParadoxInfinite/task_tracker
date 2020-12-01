@@ -1,0 +1,38 @@
+<!-- Big up to knyttneve for this HTML + CSS Login page at https://codepen.io/knyttneve/full/JQppEw -->
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+<div class="container">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">Welcome Back</h2>
+      <h4 class="animation a2">Log in to your account using email and password</h4>
+    </div>
+    <form method="POST" action="{% url 'users:login' %}">
+      <div class="form">{% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+        {% csrf_token %}
+        <input type="text" name="{{form.username.name}}" class="form-field animation a3" placeholder="{{form.username.label}}">
+        <input type="password" name="{{form.password.name}}" class="form-field animation a4" placeholder="{{form.password.label}}">
+        <br>&nbsp;
+        <p class="animation a5"><a href="#">Forgot Password?</a></p>
+        <button class="animation a6" type="submit">LOGIN</button>
+        <br>&nbsp;
+        <p class="animation a7">New to <em>Task Tracker</em>? <a href="#">Sign Up!</a></p>
+      </div>
+    </form>
+  </div>
+  <div class="right"></div>
+</div>
