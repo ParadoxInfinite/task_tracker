@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
 
 # Create your views here.
 from django.urls import reverse_lazy
@@ -7,7 +6,7 @@ from django.views.generic.edit import CreateView
 from .models import UserProfile
 from .forms import RegisterUser
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 class UserCreation(CreateView):
     '''
@@ -27,4 +26,6 @@ class CustomLoginView(LoginView):
     TODO: TODO
     '''
     template_name = 'users/login.html'
-    next = reverse_lazy('tasks:home')
+
+class CustomLogoutView(LogoutView):
+    next_page = reverse_lazy('users:login')

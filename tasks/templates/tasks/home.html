@@ -1,0 +1,9 @@
+{% extends 'dashboard.html' %}
+
+<div>
+{% block body %}
+{% for task in tasks %}
+<p>{{task.name}}</p>
+{% endfor %}
+{% endblock %}
+</div>

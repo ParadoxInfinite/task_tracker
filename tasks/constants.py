@@ -4,8 +4,15 @@
 # TODO: Permissions for the entire app, superuser, staff, user etc.
 
 task_status_choices = (
-    ('idea','Idea'),
-    ('todo','TODO'),
-    ('in_progress','In Progress'),
-    ('completed','completed')
+    ('idea', 'Idea'),
+    ('todo', 'TODO'),
+    ('in_progress', 'In Progress'),
+    ('completed', 'Completed')
+)
+
+task_priority_choices = (
+    ('low', 'Low'),
+    ('medium', 'Medium'),
+    ('high', 'High'),
+    ('critical', 'Critical')
 )
